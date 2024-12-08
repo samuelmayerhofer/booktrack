@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for proper rendering and character encoding -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Progress Tracker</title>
+    
+    <!-- Font preloading for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet and JavaScript links -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Page header -->
+    <header>
+        <h1>My Reading Progress</h1>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+        <!-- New book input form section -->
+        <section id="add-book">
+            <form id="book-form">
+                <h2>Add New Book</h2>
+                <input type="text" id="bookTitle" placeholder="Book Title" required>
+                <input type="text" id="bookAuthor" placeholder="Author" required>
+                <input type="number" id="currentPage" placeholder="Current Page" required>
+                <input type="number" id="targetPage" placeholder="Target Page">
+                <input type="date" id="targetDate" placeholder="Target Date">
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+
+        <!-- Book list display section -->
+        <section id="book-list">
+            <h2>Current Books</h2>
+            <div id="books-container"></div>
+            <button id="download-csv" class="download-button">Download as CSV</button>
+        </section>
+    </main>
+
+    <!-- Page footer -->
+    <footer>
+        <p>📚 Reading Progress Tracker</p>
+    </footer>
+</body>
+</html>
