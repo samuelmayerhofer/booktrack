@@ -219,3 +219,64 @@ footer {
     margin-top: 3rem;
     padding: 2rem;
 }
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    main {
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .book-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .book-info {
+        padding: 1rem;
+    }
+
+    .book-cover {
+        width: 120px;
+        height: 180px;
+    }
+
+    #book-form {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .book-info h3 {
+        font-size: 1.25rem;
+    }
+
+    .book-cover {
+        width: 100px;
+        height: 150px;
+    }
+
+    #book-form input,
+    #book-form button {
+        padding: 0.5rem;
+    }
+
+    .download-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
