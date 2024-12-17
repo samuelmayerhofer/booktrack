@@ -1,5 +1,5 @@
 // Store all books in memory
-const books = [];
+let books = [];
 
 // Book class definition to manage book data and calculations
 class Book {
@@ -31,6 +31,45 @@ class Book {
         const daysLeft = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
         if (daysLeft <= 0) return null;
         return Math.ceil((this.targetPage - this.currentPage) / daysLeft);
+    }
+
+    // Add method to convert book to plain object
+    toJSON() {
+        return {
+            title: this.title,
+            author: this.author,
+            currentPage: this.currentPage,
+            coverUrl: this.coverUrl,
+            totalPages: this.totalPages,
+            publishYear: this.publishYear,
+            publisher: this.publisher,
+            targetPage: this.targetPage,
+            targetDate: this.targetDate,
+            isbn: this.isbn,
+            description: this.description,
+            categories: this.categories
+        };
+    }
+
+    // Add static method to create Book from plain object
+    static fromJSON(data) {
+        const book = new Book(
+            data.title,
+            data.author,
+            data.currentPage,
+            data.targetPage,
+            data.targetDate
+        );
+        Object.assign(book, {
+            coverUrl: data.coverUrl,
+            totalPages: data.totalPages,
+            publishYear: data.publishYear,
+            publisher: data.publisher,
+            isbn: data.isbn,
+            description: data.description,
+            categories: data.categories
+        });
+        return book;
     }
 }
 
@@ -99,6 +138,7 @@ document.getElementById('book-form').addEventListener('submit', async function(e
         }
 
         books.push(newBook);
+        saveBooks();
         displayBooks();
         this.reset();
     } catch (error) {
@@ -216,5 +256,24 @@ function downloadCSV() {
     document.body.removeChild(link);
 }
 
+// Add function to save books to localStorage
+function saveBooks() {
+    const booksData = books.map(book => book.toJSON());
+    localStorage.setItem('books', JSON.stringify(booksData));
+}
+
+// Add function to load books from localStorage
+function loadBooks() {
+    const booksData = localStorage.getItem('books');
+    if (booksData) {
+        const parsedData = JSON.parse(booksData);
+        books = parsedData.map(data => Book.fromJSON(data));
+        displayBooks();
+    }
+}
+
 // Initialize download button listener
 document.getElementById('download-csv').addEventListener('click', downloadCSV);
+
+// Initialize the app by loading saved books
+document.addEventListener('DOMContentLoaded', loadBooks);
