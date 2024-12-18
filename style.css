@@ -213,6 +213,24 @@ main {
     background-color: var(--primary-dark);
 }
 
+.clear-button {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.75rem 1.5rem;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.clear-button:hover {
+    background-color: #dc2626;
+}
+
 /* Footer styling */
 footer {
     text-align: center;

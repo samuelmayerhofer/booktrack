@@ -138,7 +138,7 @@ document.getElementById('book-form').addEventListener('submit', async function(e
         }
 
         books.push(newBook);
-        saveBooks();
+        saveBooks(); // Add this line to save after adding a book
         displayBooks();
         this.reset();
     } catch (error) {
@@ -272,8 +272,20 @@ function loadBooks() {
     }
 }
 
+// Add function to clear all books
+function clearBooks() {
+    if (confirm('Are you sure you want to clear all books? This cannot be undone.')) {
+        books = [];
+        saveBooks();
+        displayBooks();
+    }
+}
+
 // Initialize download button listener
 document.getElementById('download-csv').addEventListener('click', downloadCSV);
+
+// Initialize clear button listener
+document.getElementById('clear-books').addEventListener('click', clearBooks);
 
 // Initialize the app by loading saved books
 document.addEventListener('DOMContentLoaded', loadBooks);
